@@ -8,11 +8,26 @@ function CartService($http) {
             url: "/change"
         })
     }
-    self.addItem = function(newItem) {
+    self.addItem = function(item) {
         return $http({
             method: "POST",
-            url: "colors/",
-            data: {color: newColor}
+            url: "/change",
+            data: item
+        })
+    }
+    self.deleteItem = function(id) {
+        return $http({
+            method: "DELETE",
+            url: `change/${id}`
+
+        })
+    }
+    self.editItem = function (item, itemQuantity) {
+        console.log(item)
+        return $http ({
+            method: "PUT",
+            url: `change/${item.id}`,
+            data: {...item, quantity: Number(itemQuantity)}
         })
     }
 
