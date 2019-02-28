@@ -23,11 +23,11 @@ function CartService($http) {
         })
     }
     self.editItem = function (item, itemQuantity) {
-        console.log(item)
+        console.log(item, itemQuantity)
         return $http ({
             method: "PUT",
             url: `change/${item.id}`,
-            data: {...item, quantity: Number(itemQuantity)}
+            data: {item, quantity: Number(itemQuantity)}
         })
     }
 

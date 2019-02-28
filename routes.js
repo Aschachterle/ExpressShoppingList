@@ -18,8 +18,16 @@ change.post("/change", function(req, res) {
     console.log(req.body)
     // console.log("Post request made")
 })
+// change.put("/change/:id", function(req, res) {
+//     pool.query("update ShoppingCart set product=$1::text, price=$2::int, quantity=$3::int where id=$4::int", [req.body.product, req.body.price, req.body.quantity, req.params.id]).then(function() {
+//         pool.query("select * from ShoppingCart").then(function (result) {
+//             res.send(result.rows);
+//             console.log(result.rows);
+//         });
+//     });
+// });
 change.put("/change/:id", function(req, res) {
-    pool.query("update ShoppingCart set (quantity = $1::int where id = $2::int)", [req.body.quantity, req.params.id]).then (function() {
+    pool.query("update ShoppingCart set quantity = $1::int where id = $2::int", [req.body.quantity, req.params.id]).then (function() {
         pool.query("select * from ShoppingCart").then(function(result) {
             res.send(result.rows)
         })
